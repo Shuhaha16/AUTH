@@ -1,0 +1,19 @@
+<h1>New User Account</h1>
+
+<%= form_with model: @user do |form| %>
+  <p>
+    <%= form.label "first_name" %>
+    <%= form.text_field "first_name" %>
+    <%= form.label "last_name" %>
+    <%= form.text_field "last_name" %>
+  </p>
+  <p>
+    <%= form.label "email" %>
+    <%= form.text_field "email" %>
+    <%= form.label "password" %>
+    <%= form.text_field "password" %>
+  </p>
+  <p>
+    <%= form.submit "Sign up" %>
+  </p>
+<% end %>

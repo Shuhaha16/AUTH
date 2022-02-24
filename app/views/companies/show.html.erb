@@ -1,0 +1,24 @@
+<h1><%= @company.name %></h1>
+
+<h2><%= @company.city %>, <%= @company.state %></h2>
+
+<h3>Contacts</h3>
+
+<ul>
+  <% for contact in @company.contacts %>
+    <li>
+      <a href="/contacts/<%= contact.id %>">
+        <%= "#{contact.last_name}, #{contact.first_name}" %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
+<p>
+  <a href="/contacts/new?company_id=<%= @company.id %>">New Contact</a>
+</p>
+
+<p><a href="/companies">Back to All Companies</a></p>
+
+<p><a href="/companies/<%= @company.id %>/edit">Edit</a></p>
+<p><%= button_to "Delete this company", @company, method: :delete %></p>

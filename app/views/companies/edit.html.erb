@@ -1,0 +1,15 @@
+<h1>Edit Company</h1>
+
+<%= form_with model: @company do |form| %>
+  <p>
+    <%= form.label "name", "Company Name" %>
+    <%= form.text_field "name" %>
+  </p>
+  <p>
+    <%= form.label "city" %>
+    <%= form.text_field "city" %>
+    <%= form.label "state" %>
+    <%= form.text_field "state" %>
+  </p>
+  <%= form.submit %>
+<% end %>

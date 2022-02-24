@@ -1,0 +1,36 @@
+<h1><%= @contact.last_name %>, <%= @contact.first_name %></h1>
+
+<ul>
+  <li>Email: <%= @contact.email %></li>
+  <li>Phone: <%= @contact.phone_number %></li>
+</ul>
+
+<p><a href="/companies/<%= @contact.company.id %>">Back to <%= @contact.company.name %></a></p>
+
+<h3>Sales Activity</h3>
+
+<ul>
+  <% for activity in @contact.activities %>
+    <li>
+      <%= activity.activity_type %>
+      with <%= activity.contact.first_name %> <%= activity.contact.last_name %>
+      <br>
+      <%= activity.note %>
+    </li>
+  <% end %>
+</ul>
+
+<h4>New Sales Activity</h4>
+
+<%= form_with model: @activity do |form| %>
+  <%= form.hidden_field "contact_id" %>
+  <p>
+    <%= form.select "activity_type", ["call", "email", "meeting"] %>
+    with <%= @contact.first_name %> <%= @contact.last_name %>
+  </p>
+  <p>
+    <%= form.label "note" %>
+    <%= form.text_area "note" %>
+  </p>
+  <%= form.submit %>
+<% end %>
